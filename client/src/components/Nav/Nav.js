@@ -14,7 +14,7 @@ class Nav extends Component {
 
   checkUser = () => {
     API.getUser()
-      .then(res => this.setState({ articles: res.data }))
+      .then(res => this.setState({ currentUser: res.data }))
       .catch(err => console.log(err));
   };
 

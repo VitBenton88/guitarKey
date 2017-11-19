@@ -23,8 +23,12 @@ app.use(bodyParser.json());
 //set up cookies for sessions
 app.use(cookieParser());
 
-// Use express.static to serve the public folder as a static directory
-app.use(express.static("public"));
+// Serve up static assets if in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+} else {
+    app.use(express.static("public"));
+};
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB

@@ -4,6 +4,10 @@
   "description": "Guitar learning assistant that identifies keys, provides chords and their shapes/variations, and lookup songs to learn in the same key!",
   "main": "server.js",
   "scripts": {
+    "server": "node server.js",
+    "client": "node scripts/start-client.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "build": "node scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
