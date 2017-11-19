@@ -23,6 +23,17 @@ module.exports = (app) => {
 
     });
 
+    //get route to see if user is logged
+    app.get("/user", (req, res) => {
+
+        if (req.isAuthenticated()){//if user is authenticated, send user info, otherwise send false
+            res.send(req.user)
+        } else {
+            res.send(false)
+        }
+
+    });
+
     // register new user
     app.post("/register", (req, res) => {
 
@@ -82,7 +93,7 @@ module.exports = (app) => {
         console.log(`Logging out user:`);
         console.log(req.user);
 
-        req.session.destroy( (err) => {
+        req.session.destroy((err) => {
             req.logout();
             res.send(true);
         })
