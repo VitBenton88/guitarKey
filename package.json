@@ -1,0 +1,34 @@
+{
+  "name": "guitarkey",
+  "version": "1.0.0",
+  "description": "Guitar learning assistant that identifies keys, provides chords and their shapes/variations, and lookup songs to learn in the same key!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitBenton88/guitarKey.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "bugs": {
+    "url": "https://github.com/VitBenton88/guitarKey/issues"
+  },
+  "homepage": "https://github.com/VitBenton88/guitarKey#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mongoose": "^4.13.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}

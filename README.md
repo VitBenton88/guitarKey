@@ -18,7 +18,7 @@ Packages used:
 * Bcrytp
 * Bootstrap
 * AJAX
-* Router
+* Axios
 * jQueryUI
 * Spotify API
 * GuitarParty API
