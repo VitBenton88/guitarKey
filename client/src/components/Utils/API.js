@@ -19,4 +19,9 @@ export default {
 	  	return axios.get("/user");
 	},
 
+	userLogin: function (userData) {
+
+	  	return axios.post("/login", userData);
+	},
+
 };

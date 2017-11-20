@@ -1,6 +1,35 @@
-import React from "react";
+import React, { Component } from "react";
+import API from "../Utils/API";
 
-const LoginModal = () =>
+class LoginModal extends Component {
+
+  state = {
+    email: "",
+    password: ""
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    API.userLogin(this.state)
+    .then(res => {
+	    console.log(res);
+	    this.confirmLogin();
+	});
+ };
+
+ confirmLogin = () => {
+ 	alert("Successfully Logged In!");
+ };
+
+  render() {
+    return (
 <div>
 
 	<div id="loginModal" className="modal fade" role="dialog">
@@ -12,16 +41,30 @@ const LoginModal = () =>
 	        <h4 className="modal-title">Login</h4>
 	      </div>
 	      <div className="modal-body">
-			<form action="/login" method="post">
+			<form>
 			  <div className="form-group">
 			    <label htmlFor="email">Email address:</label>
-			    <input type="email" name="email"  className="form-control" id="email" />
+			    <input
+			    	type="email"
+			    	name="email"
+			    	onChange={this.handleInputChange}
+			    	className="form-control"
+			    	id="email" />
 			  </div>
 			  <div className="form-group">
 			    <label htmlFor="pwd">Password:</label>
-			    <input type="password" name="password" className="form-control" id="pwd" />
+			    <input
+			    	type="password"
+			    	name="password"
+			    	onChange={this.handleInputChange}
+			    	className="form-control"
+			    	id="pwd" />
 			  </div>
-			  <button type="submit" className="btn btn-default">Login</button>
+			  <button
+			  	type="submit"
+			  	className="btn btn-default loginSubmit"
+			  	onClick={this.handleFormSubmit}
+			  >Login</button>
 			</form>
 	      </div>
 	      <div className="modal-footer">
@@ -33,5 +76,9 @@ const LoginModal = () =>
 	</div>
 
 </div>
+
+      );
+  }
+}
 
 export default LoginModal;
