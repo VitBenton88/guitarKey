@@ -12,7 +12,17 @@ const LoginModal = () =>
 	        <h4 className="modal-title">Login</h4>
 	      </div>
 	      <div className="modal-body">
-	        <p>Some text in the modal.</p>
+			<form action="/login" method="post">
+			  <div className="form-group">
+			    <label htmlFor="email">Email address:</label>
+			    <input type="email" name="email"  className="form-control" id="email" />
+			  </div>
+			  <div className="form-group">
+			    <label htmlFor="pwd">Password:</label>
+			    <input type="password" name="password" className="form-control" id="pwd" />
+			  </div>
+			  <button type="submit" className="btn btn-default">Login</button>
+			</form>
 	      </div>
 	      <div className="modal-footer">
 	        <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
