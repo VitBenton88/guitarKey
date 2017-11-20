@@ -1,13 +1,4 @@
 $(document).ready( () => {
-	//login modal
-	const loginExpand = $('#loginExpand');
-	const loginModal = $('#loginModal');
-
-	loginExpand.click( ()=>{
 
 
-
-	})
-
-
-});
+});//END OF DOCUMENT.READY

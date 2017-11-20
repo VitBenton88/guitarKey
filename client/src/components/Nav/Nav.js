@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import API from "../Utils/API";
 import './Nav.css';
+import { Link } from "react-router-dom";
 
 class Nav extends Component {
 
@@ -46,12 +46,12 @@ class Nav extends Component {
             <li className="active"><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
           </ul>
-              {!this.loggedInCheck()
+              {!this.loggedInCheck()//if user is not logged in, show login & register button in nav, else show logout button
                 ?
                 <div>
                   <ul className="nav navbar-nav navbar-right">
-                    <li> <a id="registerExpand">Register</a></li>
-                    <li> <a id="loginExpand">Login</a></li>
+                    <li> <a data-toggle="modal" data-target="#registerModal">Register</a></li>
+                    <li> <a data-toggle="modal" data-target="#loginModal">Login</a></li>
                   </ul>
                 </div>
                 :
