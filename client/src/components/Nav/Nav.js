@@ -1,34 +1,9 @@
-import React, { Component } from "react";
-import API from "../Utils/API";
+import React from "react";
 import './Nav.css';
 import { Link } from "react-router-dom";
 
-class Nav extends Component {
+const Nav = props =>
 
-  state = {
-    currentUser: {}
-  };
-
-  componentDidMount() {
-    this.checkUser();
-  };
-
-  checkUser = () => {
-    API.getUser()
-      .then(res => this.setState({ currentUser: res.data }))
-      .catch(err => console.log(err));
-  };
-
-  loggedInCheck = () => {
-    if (this.state.currentUser._id) {
-      return true
-    } else {
-      return false
-    };
-  };
-
-  render() {
-    return (
   <div>
     <nav className="navbar navbar-default navbar-static-top">
       <div className="container">
@@ -46,7 +21,7 @@ class Nav extends Component {
             <li className="active"><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
           </ul>
-              {!this.loggedInCheck()//if user is not logged in, show login & register button in nav, else show logout button
+              {!props.user._id //if _id does not exist IE user is not logged in, show login & register button in nav, else show logout button
                 ?
                 <div>
                   <ul className="nav navbar-nav navbar-right">
@@ -58,7 +33,7 @@ class Nav extends Component {
                 <div>
                   <ul className="nav navbar-nav navbar-right">
                   <li><a>Profile</a></li>
-                    <li><a id="logoutBtn">Logout</a></li>
+                  <li><a id="logoutBtn">Logout</a></li>
                   </ul>
                 </div>
               }
@@ -66,9 +41,5 @@ class Nav extends Component {
       </div>
     </nav>
   </div>
-
-      );
-  }
-}
 
 export default Nav;
