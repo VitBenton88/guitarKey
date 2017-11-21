@@ -18,11 +18,12 @@ class Explore extends Component {
     API.getUser()
       .then(res => {
          if (res.data === false){
-         	console.log("No user logged in");
+          console.log("No user logged in");
+          this.setState({ currentUser: {unchecked:false}});
          } else {
-         	this.setState({ currentUser: res.data })
+          this.setState({ currentUser: res.data })
           console.log(`User logged in: ${this.state.currentUser.email}`);
-         	}
+          }
        })
       .catch(err => console.log(err));
   };
@@ -32,7 +33,7 @@ class Explore extends Component {
     API.userLogout()
       .then(res => {
          if (res.data === true){
-              this.setState({ currentUser: {}})
+              this.setState({ currentUser: {unchecked:false}})
               console.log("Logout process completed!")
               alert("Logout Successful!");
          } else {
