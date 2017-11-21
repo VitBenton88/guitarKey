@@ -60,10 +60,10 @@ module.exports = (app) => {
 
                             if (error) throw (error);
 
-                            console.log("NEW USER: ");
+                            console.log("NEW USER CREATED: ");
                             console.log(signedInUser);
 
-                            req.login(signedInUser._id, (err) => {
+                            req.login(signedInUser, (err) => {
 
                                 if (err) { console.log(err); }
 
