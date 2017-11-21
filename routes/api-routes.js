@@ -12,6 +12,11 @@ const saltRounds = 10;
 // =============================================================
 module.exports = (app) => {
 
+    //send to react app on root dir
+    app.get("/", (req, res) => {
+      res.sendFile(path.join(__dirname, "../client/build/index.html"));
+    });
+
     //get route to see if user is logged
     app.get("/user", (req, res) => {
 
