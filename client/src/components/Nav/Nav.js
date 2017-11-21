@@ -14,14 +14,15 @@ const Nav = props =>
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="/">GuitarKey</a>
+          <Link className="navbar-brand" to="/">GuitarKey</Link>
+          
         </div>
         <div id="navbar" className="navbar-collapse collapse">
           <ul className="nav navbar-nav">
-            <li className="active"><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
+            <li className={window.location.pathname === "/" ? "active" : ""}><Link to="/">Home</Link></li>
+            <li className={window.location.pathname === "/about" ? "active" : ""}><Link to="/about">About</Link></li>
           </ul>
-              {!props.user._id //if _id does not exist IE user is not logged in, show login & register button in nav, else show logout button
+              {!props.user._id //if _id does not exist aka user is not logged in, show login & register button in nav, else show logout button
                 ?
                 <div>
                   <ul className="nav navbar-nav navbar-right">
@@ -32,7 +33,7 @@ const Nav = props =>
                 :
                 <div>
                   <ul className="nav navbar-nav navbar-right">
-                    <li><a>Profile</a></li>
+                    <li className={window.location.pathname === "/profile" ? "active" : ""}><Link to="/profile">Profile</Link></li>
                     <li><a id="logoutBtn" onClick={props.onClick}>Logout</a></li>
                   </ul>
                 </div>

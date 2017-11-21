@@ -19,6 +19,11 @@ export default {
 	  	return axios.get("/user");
 	},
 
+	userRegister: function (userData) {
+
+	  	return axios.post("/register", userData);
+	},
+
 	userLogin: function (userData) {
 
 	  	return axios.post("/login", userData);

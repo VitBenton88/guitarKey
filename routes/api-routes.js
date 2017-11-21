@@ -51,7 +51,6 @@ module.exports = (app) => {
                 .create(newUser)
                 .then((user) => {
 
-                    //console.log(user);
                     console.log("This is the userID for new user:");
                     console.log(user._id);
 
@@ -61,11 +60,14 @@ module.exports = (app) => {
 
                             if (error) throw (error);
 
-                            const userId = signedInUser._id;
+                            console.log("NEW USER: ");
+                            console.log(signedInUser);
 
-                            req.login(userId, () => {
+                            req.login(signedInUser._id, (err) => {
 
-                                res.redirect("/");
+                                if (err) { console.log(err); }
+
+                                res.send(true);
 
                             })
 
@@ -75,7 +77,7 @@ module.exports = (app) => {
                 .catch((err) => {
                     // If an error occurred, send it to the client
                     console.log(err);
-                    res.redirect("/");
+                    res.send(false);
                 });
         });
 

@@ -48,7 +48,9 @@ class Home extends Component {
 					user={this.state.currentUser}
           onClick={this.logout}
 				/>
-				<Body/>
+				<Body
+          user={this.state.currentUser}
+        />
 			</div>
     );
   }
