@@ -32,8 +32,8 @@ const Nav = props =>
                 :
                 <div>
                   <ul className="nav navbar-nav navbar-right">
-                  <li><a>Profile</a></li>
-                  <li><a id="logoutBtn">Logout</a></li>
+                    <li><a>Profile</a></li>
+                    <li><a id="logoutBtn" onClick={props.onClick}>Logout</a></li>
                   </ul>
                 </div>
               }

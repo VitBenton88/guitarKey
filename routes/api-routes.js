@@ -83,7 +83,7 @@ module.exports = (app) => {
 
     app.post("/login", passport.authenticate('local', {
 
-        successRedirect: "/profile", //if login was successful, redirect to profile page
+        successRedirect: "/", //if login was successful, redirect to profile page
         failureRedirect: "/" //if login unseccussful, redirect to homepage
 
     }), );

@@ -15,7 +15,29 @@ class Home extends Component {
 
   checkUser = () => {
     API.getUser()
-      .then(res => this.setState({ currentUser: res.data }))
+      .then(res => {
+         if (res.data === false){
+         	console.log("No user logged in");
+         } else {
+         	this.setState({ currentUser: res.data })
+         	}
+       })
+      .catch(err => console.log(err));
+  };
+
+  logout = () => {
+    console.log("Logout process started ...")
+    API.userLogout()
+      .then(res => {
+         if (res.data === true){
+              this.setState({ currentUser: {}})
+              console.log("Logout process completed!")
+              alert("Logout Successful!");
+              window.location.reload();
+         } else {
+            alert("Could Not Logout");
+          }
+       })
       .catch(err => console.log(err));
   };
 
@@ -24,10 +46,11 @@ class Home extends Component {
 			<div>
 				<Nav
 					user={this.state.currentUser}
+          onClick={this.logout}
 				/>
 				<Body/>
 			</div>
-      );
+    );
   }
 }
 export default Home;
