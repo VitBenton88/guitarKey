@@ -19,7 +19,7 @@ module.exports = (app) => {
         console.log(req.user);
         console.log(req.isAuthenticated());
 
-        res.sendFile("/public/index.html")
+        res.sendFile("/client/public/index.html")
 
     });
 
