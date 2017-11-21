@@ -13,14 +13,10 @@ const saltRounds = 10;
 module.exports = (app) => {
 
     // send basic index.html file at root
+    //send to react app on root dir
     app.get("/", (req, res) => {
-
-        //console log user info if any
-        console.log(req.user);
-        console.log(req.isAuthenticated());
-
-        res.redirect("/")
-
+        console.log(path.join(__dirname, "./client/build/index.html"));
+      res.sendFile(path.join(__dirname, "./client/build/index.html"));
     });
 
     //get route to see if user is logged

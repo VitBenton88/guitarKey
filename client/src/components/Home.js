@@ -6,7 +6,7 @@ import Body from "./Home/Body";
 class Home extends Component {
 
   state = {
-    currentUser: {}
+    currentUser: {unchecked:true}
   };
 
   componentDidMount() {
@@ -18,6 +18,7 @@ class Home extends Component {
       .then(res => {
          if (res.data === false){
          	console.log("No user logged in");
+          this.setState({ currentUser: {unchecked:false}});
          } else {
          	this.setState({ currentUser: res.data })
           console.log(`User logged in: ${this.state.currentUser.email}`);
@@ -31,7 +32,7 @@ class Home extends Component {
     API.userLogout()
       .then(res => {
          if (res.data === true){
-              this.setState({ currentUser: {}})
+              this.setState({ currentUser: {unchecked:false}})
               console.log("Logout process completed!")
               alert("Logout Successful!");
          } else {

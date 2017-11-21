@@ -22,7 +22,7 @@ const Nav = props =>
             <li className={window.location.pathname === "/" ? "active" : ""}><Link to="/">Home</Link></li>
             <li className={window.location.pathname === "/about" ? "active" : ""}><Link to="/about">About</Link></li>
           </ul>
-              {!props.user._id //if _id does not exist aka user is not logged in, show login & register button in nav, else show logout button
+              {!props.user.unchecked ? (!props.user._id //if _id does not exist aka user is not logged in, show login & register button in nav, else show logout button
                 ?
                 <div>
                   <ul className="nav navbar-nav navbar-right">
@@ -37,7 +37,7 @@ const Nav = props =>
                     <li className={window.location.pathname === "/profile" ? "active" : ""}><Link to="/profile">Profile</Link></li>
                     <li><a id="logoutBtn" onClick={props.onClick}>Logout</a></li>
                   </ul>
-                </div>
+                </div>) : (<div></div>)
               }
         </div>
       </div>
