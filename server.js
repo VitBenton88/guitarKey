@@ -63,7 +63,7 @@ passport.serializeUser( (user, done) => {
 
 passport.deserializeUser( (user, done) => {
     db.User
-        .findOne({ _id: user._id })
+        .findOne({ _id: user.userID })
             .then((user, error) => {
 
                 if (error) {
