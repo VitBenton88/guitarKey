@@ -12,21 +12,15 @@ const saltRounds = 10;
 // =============================================================
 module.exports = (app) => {
 
-    // send basic index.html file at root
-    app.get("/", (req, res) => {
-
-        //console log user info if any
-        console.log(req.user);
-        console.log(req.isAuthenticated());
-
-        res.send("../public/index.html")
-
+    // redirect any route to homepage
+    app.get('/*', (req, res) => {
+        res.redirect("/");
     });
 
     //get route to see if user is logged
     app.get("/user", (req, res) => {
 
-        if ( req.isAuthenticated() ) {//if user is authenticated, send user info, otherwise send false
+        if (req.isAuthenticated()) { //if user is authenticated, send user info, otherwise send false
             res.send(req.user)
         } else {
             res.send(false)
@@ -63,7 +57,7 @@ module.exports = (app) => {
                             console.log("NEW USER CREATED: ");
                             console.log(signedInUser);
                             //deserialize config is expecting user.userID to be accessible
-                            req.login({userID: signedInUser._id}, (err) => {
+                            req.login({ userID: signedInUser._id }, (err) => {
 
                                 if (err) { console.log(err); }
 
