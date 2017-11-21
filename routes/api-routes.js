@@ -12,6 +12,8 @@ const saltRounds = 10;
 // =============================================================
 module.exports = (app) => {
 
+    //"/" route goes here
+
     //get route to see if user is logged
     app.get("/user", (req, res) => {
 
