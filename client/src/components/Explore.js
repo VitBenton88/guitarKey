@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import API from "./Utils/API";
 import Nav from "./Nav/Nav";
-import Body from "./Profile/Body";
-import SignInAlert from "./Profile/SignInAlert";
+import Body from "./Explore/Body";
+import SignInAlert from "./Explore/SignInAlert";
 
-class Profile extends Component {
+class Explore extends Component {
 
   state = {
     currentUser: {}
@@ -61,5 +61,5 @@ class Profile extends Component {
     );
   }
 }
-export default Profile;
+export default Explore;
 

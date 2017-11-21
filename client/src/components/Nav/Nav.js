@@ -33,7 +33,7 @@ const Nav = props =>
                 :
                 <div>
                   <ul className="nav navbar-nav navbar-right">
-                    <li className={window.location.pathname === "/explore" ? "active" : ""}><Link to="/profile">Explore</Link></li>
+                    <li className={window.location.pathname === "/explore" ? "active" : ""}><Link to="/explore">Explore</Link></li>
                     <li className={window.location.pathname === "/profile" ? "active" : ""}><Link to="/profile">Profile</Link></li>
                     <li><a id="logoutBtn" onClick={props.onClick}>Logout</a></li>
                   </ul>

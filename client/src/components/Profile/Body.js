@@ -17,9 +17,34 @@ const Body = props =>
               <RegisterModal/>
           </div>
           :
-          null
-    }
+            null
+          }
 
-  </div>
+          { props.user.keys.length === 0 //if no keys are saved for user, display warning
+            ?
+            <div>
+              <div className="container">
+                <div className="alert alert-warning">
+                  <strong>Oh No!</strong> You have no saved keys.
+                </div>
+              </div>
+            </div>
+              :
+              <div>
+                <div className="container">
+                  <div className="row">
+                   {props.user.keys.map(key =>
+                      <div key={key} className="col-md-4">
+                          <div className="panel panel-danger">
+                              <div className="panel-heading">Key of {key}</div>
+                              <div className="panel-body">Chords: </div>
+                          </div>
+                      </div>
+                    )}
+                 </div>
+              </div>
+            </div>
+          }
+    </div>
 
 export default Body;
