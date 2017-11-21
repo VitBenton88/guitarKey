@@ -12,7 +12,16 @@ const saltRounds = 10;
 // =============================================================
 module.exports = (app) => {
 
-    //"/" route goes here
+    // send basic index.html file at root
+    app.get("/", (req, res) => {
+
+        //console log user info if any
+        console.log(req.user);
+        console.log(req.isAuthenticated());
+
+        res.send("../public/index.html")
+
+    });
 
     //get route to see if user is logged
     app.get("/user", (req, res) => {
