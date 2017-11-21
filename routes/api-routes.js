@@ -12,11 +12,6 @@ const saltRounds = 10;
 // =============================================================
 module.exports = (app) => {
 
-    // redirect any route to homepage
-    app.get('/*', (req, res) => {
-        res.redirect("/");
-    });
-
     //get route to see if user is logged
     app.get("/user", (req, res) => {
 
