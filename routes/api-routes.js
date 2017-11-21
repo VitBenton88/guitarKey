@@ -62,7 +62,7 @@ module.exports = (app) => {
 
                             console.log("NEW USER CREATED: ");
                             console.log(signedInUser);
-
+                            //deserialize config is expecting user.userID to be accessible
                             req.login({userID: signedInUser._id}, (err) => {
 
                                 if (err) { console.log(err); }

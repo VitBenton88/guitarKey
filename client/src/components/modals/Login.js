@@ -19,7 +19,6 @@ class LoginModal extends Component {
     event.preventDefault();
     API.userLogin(this.state)
     .then(res => {
-	    console.log(res)
 	    this.confirmLogin()
 	});
  };

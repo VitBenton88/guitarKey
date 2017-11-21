@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import API from "./Utils/API";
 import Nav from "./Nav/Nav";
-import Body from "./Home/Body";
+import Body from "./Profile/Body";
+import SignInAlert from "./Profile/SignInAlert";
 
 class Home extends Component {
 
@@ -48,9 +49,14 @@ class Home extends Component {
 					user={this.state.currentUser}
           onClick={this.logout}
 				/>
-				<Body
-          user={this.state.currentUser}
-        />
+        {!this.state.currentUser._id
+          ?
+            <SignInAlert />
+          :
+  				<Body
+            user={this.state.currentUser}
+          />
+        }
 			</div>
     );
   }
