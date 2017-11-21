@@ -17,11 +17,10 @@ const KeyFinder = props =>
           :
           <div className="container">
               <div className="row">
-               {Music.musicalKeys.map(key =>
-                  <div key={key} className="col-md-4">
-                      <div className="panel panel-default">
-                          <div className="panel-heading">Key of {key} <button data-selected="false" type="button" className="btn btn-basic keyAddBtn">Add</button></div>
-                          <div className="panel-body">{Music.chordFinder({key}).join(", ")}</div>
+               {Music.guitarChords.map(chord =>
+                  <div key={chord} className="col-md-2 col-sm-2 col-xs-2">
+                      <div className="panel panel-default chordPanel">
+                          <div className="panel-body">{chord}</div>
                       </div>
                   </div>
                 )}

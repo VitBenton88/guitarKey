@@ -7,15 +7,13 @@ $(document).ready(() => {
 
     });
 
-  $("body").on("click", ".keyAddBtn", function() {
-  		if ($(this).attr('data-selected') == "false") {
-  			$(this).attr('data-selected', "true")
-		  	$(this).removeClass('btn-basic');
-		  	$(this).addClass('btn-success');
+  $("body").on("click", ".chordPanel", function() {
+  		if (!$(this).hasClass('selected')) {
+  			$(this).css('background-color', "#98FB98")
+		  	$(this).addClass('selected');
 		 } else {
-		 	$(this).attr('data-selected', "false")
-		 	$(this).removeClass('btn-success');
-		 	$(this).addClass('btn-basic');
+		 	$(this).removeClass('selected');
+		 	$(this).css('background-color', "white")
 		 }
   })
 

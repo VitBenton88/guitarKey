@@ -13,7 +13,7 @@ const saltRounds = 10;
 module.exports = (app) => {
 
     // send basic index.html file at root
-    app.get("/*", (req, res) => {
+    app.get("/", (req, res) => {
 
         //console log user info if any
         console.log(req.user);

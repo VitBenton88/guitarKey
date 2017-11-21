@@ -7,3 +7,17 @@
 .keyAddBtn {
 	float: right;
 }
+
+.panel-body {
+	text-align: center;
+}
+
+.chordPanel{
+	background-color: white;
+	transition: background-color .3s;
+}
+
+.chordPanel:hover {
+	cursor: pointer;
+	background-color: #98FB98;
+}

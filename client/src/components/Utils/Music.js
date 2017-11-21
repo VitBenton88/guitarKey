@@ -5,6 +5,8 @@ export default {
 
 	musicalKeys: ["C","D","E","F","G","A","B"],
 
+	guitarChords: ["C","Dm","Em","F","G","Am","D","F#m","A","Bm","B","C#m","D#m","G#m"],
+
 	chordFinder: (key) => {//http://www.guitaristsource.com/lessons/chords/keys/
 		let chords;
 		switch(key.key) {

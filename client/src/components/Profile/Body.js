@@ -2,6 +2,7 @@ import React from "react";
 import LoginModal from "../Modals/Login";
 import RegisterModal from "../Modals/Register";
 import Jumbotron from "./Jumbotron";
+import Music from "../Utils/Music";
 
 const Body = props =>
 
@@ -34,10 +35,10 @@ const Body = props =>
                 <div className="container">
                   <div className="row">
                    {props.user.keys.map(key =>
-                      <div key={key} className="col-md-4">
+                      <div key={key} className="col-md-4 col-sm-4 col-xs-4">
                           <div className="panel panel-danger">
                               <div className="panel-heading">Key of {key}</div>
-                              <div className="panel-body">Chords: </div>
+                              <div className="panel-body">{Music.chordFinder({key}).join(", ")}</div>
                           </div>
                       </div>
                     )}
