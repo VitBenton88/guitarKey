@@ -15,8 +15,8 @@ module.exports = (app) => {
     // send basic index.html file at root
     //send to react app on root dir
     app.get("/", (req, res) => {
-        console.log(path.join(__dirname, "./client/build/index.html"));
-      res.sendFile(path.join(__dirname, "./client/build/index.html"));
+        console.log(path.join(__dirname, "../client/build/index.html"));
+      res.sendFile(path.join(__dirname, "../client/build/index.html"));
     });
 
     //get route to see if user is logged
