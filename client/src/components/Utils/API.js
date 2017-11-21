@@ -29,9 +29,14 @@ export default {
 	  	return axios.post("/login", userData);
 	},
 
-	userLogout: function (userData) {
+	userLogout: function () {
 
 	  	return axios.post("/logout");
 	},
+
+	userUpdate: function (data) {
+
+	  	return axios.post("/logout", data);
+	}
 
 };

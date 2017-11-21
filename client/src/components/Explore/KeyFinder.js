@@ -1,8 +1,9 @@
 import React from "react";
 import LoginModal from "../Modals/Login";
 import RegisterModal from "../Modals/Register";
+import Music from "../Utils/Music";
 
-const Body = props =>
+const KeyFinder = props =>
 
   <div>
   
@@ -13,9 +14,9 @@ const Body = props =>
               <RegisterModal/>
           </div>
           :
-          null
+          Music.keyFinder()
     }
 
   </div>
 
-export default Body;
+export default KeyFinder;

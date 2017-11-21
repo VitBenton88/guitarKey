@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "./Utils/API";
 import Nav from "./Nav/Nav";
-import Body from "./Explore/Body";
+import KeyFinder from "./Explore/KeyFinder";
 import SignInAlert from "./Explore/SignInAlert";
 
 class Explore extends Component {
@@ -42,6 +42,22 @@ class Explore extends Component {
       .catch(err => console.log(err));
   };
 
+  // updateKeys = () => {
+  //   console.log("Updating musical keys ...")
+  //   API.userUpdate()
+  //     .then(res => {
+  //        if (res.data === true){
+  //             this.setState({ currentUser: {}})
+  //             console.log("Logout process completed!")
+  //             alert("Logout Successful!");
+  //        } else {
+  //           alert("Could Not Logout");
+  //         }
+  //      })
+  //     .catch(err => console.log(err));
+  // };
+
+
   render() {
     return (
 			<div>
@@ -53,9 +69,9 @@ class Explore extends Component {
           ?
             <SignInAlert />
           :
-  				<Body
+  				<KeyFinder
             user={this.state.currentUser}
-          />
+           />
         }
 			</div>
     );
