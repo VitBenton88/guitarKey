@@ -14,27 +14,27 @@ export default {
 	// 	return axios.get(queryURL);
 	// },
 
-	getUser: function () {
+	getUser: () => {
 
 	  	return axios.get("/user");
 	},
 
-	userRegister: function (userData) {
+	userRegister: (userData) => {
 
 	  	return axios.post("/register", userData);
 	},
 
-	userLogin: function (userData) {
+	userLogin: (userData) => {
 
 	  	return axios.post("/login", userData);
 	},
 
-	userLogout: function () {
+	userLogout: () => {
 
 	  	return axios.post("/logout");
 	},
 
-	userUpdate: function (data) {
+	userUpdate: (data) => {
 
 	  	return axios.post("/logout", data);
 	}
