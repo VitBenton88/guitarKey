@@ -7,14 +7,4 @@ $(document).ready(() => {
 
     });
 
-  $("body").on("click", ".chordPanel", function() {
-  		if (!$(this).hasClass('selected')) {
-  			$(this).css('background-color', "#98FB98")
-		  	$(this).addClass('selected');
-		 } else {
-		 	$(this).removeClass('selected');
-		 	$(this).css('background-color', "white")
-		 }
-  })
-
 }); //END OF DOCUMENT.READY

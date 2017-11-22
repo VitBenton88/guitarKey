@@ -7,7 +7,7 @@ import SignInAlert from "./Explore/SignInAlert";
 class Explore extends Component {
 
   state = {
-    currentUser: {}
+    currentUser: {unchecked:true}
   };
 
   componentDidMount() {

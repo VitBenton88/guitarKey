@@ -7,7 +7,7 @@ import SignInAlert from "./Profile/SignInAlert";
 class Profile extends Component {
 
   state = {
-    currentUser: {}
+    currentUser: {unchecked:true}
   };
 
   componentDidMount() {

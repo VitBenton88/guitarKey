@@ -1,11 +1,15 @@
 import React from "react";
 import axios from "axios";
 
+	const musicalKeys = ["C","D","E","F","G","A","B"];
+
+	const guitarChords = ["C","Dm","Em","F","G","Am","D","F#m","A","Bm","B","C#m","D#m","G#m"];
+
 export default {
 
-	musicalKeys: ["C","D","E","F","G","A","B"],
+	musicalKeys,
 
-	guitarChords: ["C","Dm","Em","F","G","Am","D","F#m","A","Bm","B","C#m","D#m","G#m"],
+	guitarChords,
 
 	chordFinder: (key) => {//http://www.guitaristsource.com/lessons/chords/keys/
 		let chords;
@@ -41,6 +45,8 @@ export default {
 		    default: 
         		return "No chords found";
 		}
-	}
+	},
+
+	keyOptions: guitarChords.map((chord)=>{ return {chord: chord, selected:false}})
 
 };
