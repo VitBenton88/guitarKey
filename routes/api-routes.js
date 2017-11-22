@@ -12,8 +12,7 @@ const saltRounds = 10;
 // =============================================================
 module.exports = (app) => {
 
-    // send basic index.html file at root
-    //send to react app on root dir
+    // send basic index.html file in build dir at root
     app.get("/", (req, res) => {
         console.log(path.join(__dirname, "../client/build/index.html"));
       res.sendFile(path.join(__dirname, "../client/build/index.html"));
@@ -104,6 +103,13 @@ module.exports = (app) => {
         //console log user info if any
         console.log(req.user);
         console.log(req.isAuthenticated());
+
+        res.redirect("/")
+
+    });
+
+    //for all other paths, redirect home
+    app.get("/*", (req, res) => {
 
         res.redirect("/")
 
