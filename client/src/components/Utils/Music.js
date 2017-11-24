@@ -5,42 +5,46 @@ import axios from "axios";
 
 	const guitarChords = ["C","Dm","Em","F","G","Am","D","F#m","A","Bm","B","C#m","D#m","G#m"];
 
+	const chordsInKeys = {
+		C: ["C","Dm","Em","F","G","Am","Bdim"],
+		D: ["D","Em","F#m","G","A","Bm","C#dim"],
+		E: ["E","F#m","G#m","A","B","C#m","D#dim"],
+		F: ["F","Gm","Am","Bsharp","C","Dm","Edim"],
+		G: ["G","Am","Bm","C","D","Em","F#dim"],
+		A: ["A","Bm","C#m","D","E","F#m","G#dim"],
+		B: ["B","C#m","D#m","E","F#","G#m","A#dim"]
+	}
+
 export default {
 
 	musicalKeys,
 
 	guitarChords,
 
+	chordsInKeys,
+
 	chordFinder: (key) => {//http://www.guitaristsource.com/lessons/chords/keys/
-		let chords;
 		switch(key.key) {
 		    case "C":
-		        chords = ["C","Dm","Em","F","G","Am","Bdim"];
-		        return chords;
+		        return chordsInKeys.C;
 		        break;
 		    case "D":
-		        chords = ["D","Em","F#m","G","A","Bm","C#dim"];
-		        return chords;
+		        return chordsInKeys.D;
 		        break;
 		    case "E":
-		        chords = ["E","F#m","G#m","A","B","C#m","D#dim"];
-		        return chords;
+		        return chordsInKeys.E;
 		        break;
 		    case "F":
-		        chords = ["F","Gm","Am","Bsharp","C","Dm","Edim"];
-		        return chords;
+		        return chordsInKeys.F;
 		        break;
 		    case "G":
-		        chords = ["G","Am","Bm","C","D","Em","F#dim"];
-		        return chords;
+		        return chordsInKeys.G;
 		        break;
 		    case "A":
-		        chords = ["A","Bm","C#m","D","E","F#m","G#dim"];
-		        return chords;
+		        return chordsInKeys.A;
 		        break;
-		    case "B":
-		        chords = ["B","C#m","D#m","E","F#","G#m","A#dim"];
-		        return chords;
+		    case "B":;
+		        return chordsInKeys.B;
 		        break;
 		    default: 
         		return "No chords found";
