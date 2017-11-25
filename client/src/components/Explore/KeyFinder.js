@@ -24,6 +24,7 @@ class KeyFinder extends Component {
       this.setState(this.state);
       console.log("Selecting: " + this.state.guitarChords[index].chord);
       this.selectedCount();
+      this.resultsGen();//on each chord click, generate array of results.
   };
 
   selectedCount = () => {//count how many chords are selected
@@ -40,29 +41,28 @@ class KeyFinder extends Component {
   };
 
   resultsGen = () => {
+
     const chordsArr = this.state.guitarChords;
+    const chordsWithKeys = Music.chordsWithKeys;
     const results = [];
 
-    console.log(chordsArr);
-
-    // for (let i = 0; i < chordsArr.length; i++) {
-    //   for (let j = i; j < Music.chordsWithKeys.length; j++) {
-    //     for (let n = j; n < Music.chordsWithKeys[j].chords.length; n++) {
-    //       if (chordsArr[i].selected === true && chordsArr[i].chord == Music.chordsWithKeys[j].chords[n]){
-    //         console.log(chordsArr[i].chord);
-    //         results.push(chordsArr[i].chord);
-    //       }
-    //     }
-    //   }
-    // }
-    // this.setState({results});
-    console.log(results)
+    for (let i = 0; i < chordsArr.length; i++) {
+      if (chordsArr[i].selected === true){
+        for (let j = 0; j < chordsWithKeys.length; j++) {
+          for (let n = 0; n < chordsWithKeys[j].chords.length; n++) {
+            if (chordsWithKeys[j].chords[n] == chordsArr[i].chord) {
+              results.push(chordsWithKeys[j].note);
+            }
+          }
+        }
+      }
+    }
+    this.setState({results});
   };
 
   resultsRender = () => {
     let selectedCount = this.state.selected;
     if (this.state.selected >= 2) {
-      this.resultsGen();
       return (
         <Results
           results = {this.state.results}
