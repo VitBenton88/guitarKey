@@ -15,7 +15,7 @@ module.exports = (app) => {
     // send basic index.html file in build dir at root
     app.get("/", (req, res) => {
         console.log(path.join(__dirname, "../client/build/index.html"));
-      res.sendFile(path.join(__dirname, "../client/build/index.html"));
+        res.sendFile(path.join(__dirname, "../client/build/index.html"));
     });
 
     //get route to see if user is logged
@@ -119,11 +119,14 @@ module.exports = (app) => {
         console.log(`For user ${_id}`);
 
 
-        db.User.update(
-            { _id }, 
-            { $push: { keys: key } })
-            .then((res, error) => {
-                res.send(res);
+        db.User.update({ _id }, { $push: { keys: key } })
+            .then((error) => {
+                if (error) {
+                    console.log(error);
+                    res.send(false);
+                } else {
+                    res.send(true);
+                }
             });
 
     });

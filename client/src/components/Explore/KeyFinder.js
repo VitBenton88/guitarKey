@@ -79,7 +79,11 @@ class KeyFinder extends Component {
   saveKey = key => {
     API.saveKey({key})
     .then(res => {
-      console.log(res)
+      if(res){
+        alert("Key Saved!");
+      } else{
+        alert("Key Not Saved, Error");
+      }
   });
  };
 
