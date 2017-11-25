@@ -43,15 +43,18 @@ class KeyFinder extends Component {
     const chordsArr = this.state.guitarChords;
     const results = [];
 
-    for (let i = 0; i < chordsArr.length; i++) {
-      for (let j = i; j < Music.chordsWithKeys.length; j++) {
-        for (let n = j; n < Music.chordsWithKeys[j].chords.length; n++) {
-          if (chordsArr[i].selected === true && chordsArr[i].chord == Music.chordsWithKeys[j].chords[n]){
-            results.push(chordsArr[i].chord)
-          }
-        }
-      }
-    }
+    console.log(chordsArr);
+
+    // for (let i = 0; i < chordsArr.length; i++) {
+    //   for (let j = i; j < Music.chordsWithKeys.length; j++) {
+    //     for (let n = j; n < Music.chordsWithKeys[j].chords.length; n++) {
+    //       if (chordsArr[i].selected === true && chordsArr[i].chord == Music.chordsWithKeys[j].chords[n]){
+    //         console.log(chordsArr[i].chord);
+    //         results.push(chordsArr[i].chord);
+    //       }
+    //     }
+    //   }
+    // }
     // this.setState({results});
     console.log(results)
   };
