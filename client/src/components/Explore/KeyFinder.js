@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import LoginModal from "../Modals/Login";
 import RegisterModal from "../Modals/Register";
 import Music from "../Utils/Music";
+import ChordForm from './ChordForm';
+import Results from './Results';
 import './KeyFinder.css';
 
 class KeyFinder extends Component {
 
   state = {
-    guitarChords: []
+    guitarChords: [],
+    selected: 0,
+    results: []
   };
 
   componentDidMount() {
@@ -18,7 +22,52 @@ class KeyFinder extends Component {
       index = parseInt(index);//make sure the index is not a string
       this.state.guitarChords[index].selected = !this.state.guitarChords[index].selected;//equate inverse pof current value for select/deseselt functionality
       this.setState(this.state);
-      console.log("Selecting: " + this.state.guitarChords[index].chord)
+      console.log("Selecting: " + this.state.guitarChords[index].chord);
+      this.selectedCount();
+  };
+
+  selectedCount = () => {//count how many chords are selected
+
+    const chordsArr = this.state.guitarChords;
+    let count = 0;
+
+    for (let i = 0; i < chordsArr.length; i++) {
+      if (chordsArr[i].selected === true){
+        count++;
+      }
+    }
+    this.setState({selected: count});
+  };
+
+  resultsGen = () => {
+    const chordsArr = this.state.guitarChords;
+    const results = [];
+
+    for (let i = 0; i < chordsArr.length; i++) {
+      for (let j = i; j < Music.chordsWithKeys.length; j++) {
+        for (let n = j; n < Music.chordsWithKeys[j].chords.length; n++) {
+          if (chordsArr[i].selected === true && chordsArr[i].chord == Music.chordsWithKeys[j].chords[n]){
+            results.push(chordsArr[i].chord)
+          }
+        }
+      }
+    }
+    // this.setState({results});
+    console.log(results)
+  };
+
+  resultsRender = () => {
+    let selectedCount = this.state.selected;
+    if (this.state.selected >= 2) {
+      this.resultsGen();
+      return (
+        <Results
+          results = {this.state.results}
+         />
+      )
+
+    }
+
   };
 
   render() {
@@ -32,22 +81,15 @@ class KeyFinder extends Component {
                   <RegisterModal/>
               </div>
               :
-              <div className="container">
-                  <div className="row">
-                   {this.state.guitarChords.map((chord, ind) =>
-                      <div key={ind} onClick={ () => this.chordSelecter(ind) } className="col-md-2 col-sm-2 col-xs-4">
-                          <div className="panel panel-default chordPanel">
-                              <div className={chord.selected ? "panel-body selectedChord" : "panel-body"} >{chord.chord}</div>
-                          </div>
-                      </div>
-                    )}
-                 </div>
+              <div>
+                <ChordForm
+                  chords={this.state.guitarChords}
+                  onClick={this.chordSelecter}
+                 />
+                 {this.resultsRender()}
               </div>
         }
 
-        <div className="container">
-          <button type="button" className="btn btn-success">Submit</button>
-        </div>
       </div>
 
     );

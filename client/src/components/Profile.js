@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "./Utils/API";
 import Nav from "./Nav/Nav";
 import Body from "./Profile/Body";
-import SignInAlert from "./Profile/SignInAlert";
+import SignInAlert from "./Alerts/SignInAlert";
 
 class Profile extends Component {
 

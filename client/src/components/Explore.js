@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "./Utils/API";
 import Nav from "./Nav/Nav";
 import KeyFinder from "./Explore/KeyFinder";
-import SignInAlert from "./Explore/SignInAlert";
+import SignInAlert from "./Alerts/SignInAlert";
 
 class Explore extends Component {
 
