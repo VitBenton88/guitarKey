@@ -37,6 +37,10 @@ export default {
 	userUpdate: (data) => {
 
 	  	return axios.post("/logout", data);
+	},
+
+	saveKey: (data) => {
+		return axios.post("/saveKey", data);
 	}
 
 };

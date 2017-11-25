@@ -85,6 +85,7 @@ module.exports = (app) => {
 
     }), );
 
+    //user logout
     app.post("/logout", (req, res) => {
 
         console.log(`Logging out user:`);
@@ -105,6 +106,25 @@ module.exports = (app) => {
         console.log(req.isAuthenticated());
 
         res.redirect("/")
+
+    });
+
+    //save selected keys to DB
+    app.post("/saveKey", (req, res) => {
+
+        const key = req.body.key.key;
+        const _id = req.user._id;
+
+        console.log(`Saving key of: ${key}`);
+        console.log(`For user ${_id}`);
+
+
+        db.User.update(
+            { _id }, 
+            { $push: { keys: key } })
+            .then((res, error) => {
+                res.send(res);
+            });
 
     });
 

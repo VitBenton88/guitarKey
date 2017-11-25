@@ -3,7 +3,6 @@ import LoginModal from "../Modals/Login";
 import RegisterModal from "../Modals/Register";
 import Jumbotron from "./Jumbotron";
 import SavedKeys from "./SavedKeys";
-import Music from "../Utils/Music";
 import NoKeys from "../Alerts/NoKeys";
 
 const Body = props =>

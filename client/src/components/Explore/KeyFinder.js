@@ -4,6 +4,7 @@ import RegisterModal from "../Modals/Register";
 import Music from "../Utils/Music";
 import ChordForm from './ChordForm';
 import Results from './Results';
+import API from "../Utils/API";
 import './KeyFinder.css';
 
 class KeyFinder extends Component {
@@ -44,34 +45,43 @@ class KeyFinder extends Component {
 
     const chordsArr = this.state.guitarChords;
     const chordsWithKeys = Music.chordsWithKeys;
-    const results = [];
+    let results = [];
 
     for (let i = 0; i < chordsArr.length; i++) {
       if (chordsArr[i].selected === true){
         for (let j = 0; j < chordsWithKeys.length; j++) {
           for (let n = 0; n < chordsWithKeys[j].chords.length; n++) {
-            if (chordsWithKeys[j].chords[n] == chordsArr[i].chord) {
+            if (chordsWithKeys[j].chords[n] === chordsArr[i].chord) {
               results.push(chordsWithKeys[j].note);
             }
           }
         }
       }
     }
-    this.setState({results});
+    results = Array.from(new Set(results));//set results array to a new array sans dups
+    this.setState({results});//set results prop in state to new array
   };
 
   resultsRender = () => {
     let selectedCount = this.state.selected;
-    if (this.state.selected >= 2) {
+    if (selectedCount >= 2) {
       return (
         <Results
           results = {this.state.results}
+          save={this.saveKey}
          />
       )
 
     }
 
   };
+
+  saveKey = key => {
+    API.saveKey({key})
+    .then(res => {
+      console.log(res)
+  });
+ };
 
   render() {
     return (
