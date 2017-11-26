@@ -3,9 +3,6 @@ import './Buttons.css';
 
 const SaveKey = props =>
 
-  <div>
-      <a onClick={props.save} className="btn btn-success saveBtn">
-        <i className="fa fa-floppy-o"></i></a>
-  </div>
+    <i onClick={props.save} className="fa fa-floppy-o pull-right"></i>
 
 export default SaveKey;

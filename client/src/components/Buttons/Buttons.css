@@ -1,5 +1,18 @@
-.saveBtn, .delBtn {
-	float: right;
-	border: 1px solid white !important;
-	margin-top: 0px;
+i {
+	padding: 4px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+i:hover {
+	cursor: pointer;
+}
+
+.fa-floppy-o:hover {
+	border: 1px solid white;
+}
+
+.fa-trash-o:hover {
+	color: red;
+	border: 1px solid red;
 }
