@@ -1,6 +1,7 @@
 import React from "react";
 import Music from "../Utils/Music";
 import DelKeyBtn from "../Buttons/DeleteKey";
+import './Profile.css';
 
 const SavedKeys = props =>
 
@@ -9,8 +10,8 @@ const SavedKeys = props =>
         <div className="row">
          {props.keys.map(key =>
             <div key={key} className="col-md-4 col-sm-4 col-xs-6">
-                <div className="panel panel-danger">
-                    <div className="panel-heading">Key of {key} <DelKeyBtn/> </div>
+                <div className="panel panel-default">
+                    <div className="panel-heading"><h2 className="panel-title">Key of {key} <DelKeyBtn/> </h2></div>
                     <div className="panel-body">{Music.chordFinder({key}).join(", ")}</div>
                 </div>
             </div>

@@ -1,9 +1,5 @@
 .saveBtn, .delBtn {
 	float: right;
 	border: 1px solid white !important;
+	margin-top: 0px;
 }
-
-.panel-heading {
-	overflow: auto;
-}
-
