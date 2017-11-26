@@ -131,6 +131,28 @@ module.exports = (app) => {
 
     });
 
+    //delete selected keys from DB
+    app.post("/deleteKey", (req, res) => {
+
+        const key = req.body.key.key;
+        const _id = req.user._id;
+
+        console.log(`Deleting key of: ${key}`);
+        console.log(`For user ${_id}`);
+
+
+        db.User.update({ _id }, { $pullAll: { keys: [ key ] } } )
+            .then((error) => {
+                if (error) {
+                    console.log(error);
+                    res.send(false);
+                } else {
+                    res.send(true);
+                }
+            });
+
+    });
+
     //for all other paths, redirect home
     app.get("/*", (req, res) => {
 

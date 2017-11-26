@@ -31,6 +31,7 @@ const Body = props =>
               <div>
                 <SavedKeys
                   keys = {props.user.keys}
+                  onClick={props.onClick}
                 />
             </div>
           }

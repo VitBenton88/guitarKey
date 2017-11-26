@@ -43,22 +43,6 @@ class Explore extends Component {
       .catch(err => console.log(err));
   };
 
-  // updateKeys = () => {
-  //   console.log("Updating musical keys ...")
-  //   API.userUpdate()
-  //     .then(res => {
-  //        if (res.data === true){
-  //             this.setState({ currentUser: {}})
-  //             console.log("Logout process completed!")
-  //             alert("Logout Successful!");
-  //        } else {
-  //           alert("Could Not Logout");
-  //         }
-  //      })
-  //     .catch(err => console.log(err));
-  // };
-
-
   render() {
     return (
 			<div>
@@ -79,4 +63,3 @@ class Explore extends Component {
   }
 }
 export default Explore;
-

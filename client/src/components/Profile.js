@@ -43,6 +43,17 @@ class Profile extends Component {
       .catch(err => console.log(err));
   };
 
+  deleteKey = key => {
+    API.deleteKey({key})
+    .then(res => {
+      if(res){
+        this.checkUser();//if key was deleted, checkuser and re-render page showing new saved keys
+      } else{
+        alert("Key Not Deleted, Error");
+      }
+  });
+ };
+
   render() {
     return (
 			<div>
@@ -56,6 +67,7 @@ class Profile extends Component {
           :
   				<Body
             user={this.state.currentUser}
+            onClick={this.deleteKey}
           />
         }
 			</div>
@@ -63,4 +75,3 @@ class Profile extends Component {
   }
 }
 export default Profile;
-

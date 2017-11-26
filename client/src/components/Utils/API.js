@@ -41,6 +41,10 @@ export default {
 
 	saveKey: (data) => {
 		return axios.post("/saveKey", data);
+	},
+
+	deleteKey: (data) => {
+		return axios.post("/deleteKey", data);
 	}
 
 };
