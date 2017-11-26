@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import API from "./Utils/API";
+import Music from "./Utils/Music";
 import Nav from "./Nav/Nav";
 import Body from "./Profile/Body";
+import ChordsModal from "./Modals/Chords";
 import SignInAlert from "./Alerts/SignInAlert";
 
 class Profile extends Component {
 
   state = {
-    currentUser: {unchecked:true}
+    currentUser: {unchecked:true},
+    keys: []
   };
 
   componentDidMount() {
     this.checkUser();
+    this.setState({ keys: Music.chordsWithKeys.slice()});
   };
 
   checkUser = () => {
@@ -54,6 +58,35 @@ class Profile extends Component {
   });
  };
 
+  expandKey = key => {
+    const keys = this.state.keys;
+    for (let i = 0; i < keys.length; i++) {
+      if (keys[i].note === key.key) {
+        keys[i].expanded = true
+      }
+    }
+    this.setState(this.state);
+ };
+
+    returnExpanded = () => {
+    const keys = this.state.keys;
+    for (let i = 0; i < keys.length; i++) {
+      if (keys[i].expanded) {
+        return keys[i].note
+      }
+    }
+ };
+
+ closeChordsModal = () => {
+    const keys = this.state.keys;
+    for (let i = 0; i < keys.length; i++) {
+      if (keys[i].expanded) {
+        keys[i].expanded = false
+      }
+    }
+    this.setState(this.state);
+};
+
   render() {
     return (
 			<div>
@@ -67,9 +100,11 @@ class Profile extends Component {
           :
   				<Body
             user={this.state.currentUser}
-            onClick={this.deleteKey}
+            delete={this.deleteKey}
+            expand={this.expandKey}
           />
         }
+        { this.returnExpanded() ? <ChordsModal close = {this.closeChordsModal} expandedKey={this.returnExpanded()} /> : null}
 			</div>
     );
   }

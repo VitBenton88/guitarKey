@@ -16,3 +16,8 @@ i:hover {
 	color: red;
 	border: 1px solid red;
 }
+
+.fa-expand:hover {
+	color: #5cb85c;
+	border: 1px solid #5cb85c;
+}

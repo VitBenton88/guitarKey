@@ -41,7 +41,7 @@ class KeyFinder extends Component {
     this.setState({selected: count});
   };
 
-  resultsGen = () => {
+  resultsGen = () => {//the actual matching engine. NOT ACCURATE, ONLY RETURNS CHORDS CONTAINED IN KEY, NOT BEST MATCH OF CHOSEN
 
     const chordsArr = this.state.guitarChords;
     const chordsWithKeys = Music.chordsWithKeys;
