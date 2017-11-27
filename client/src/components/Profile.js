@@ -104,7 +104,15 @@ class Profile extends Component {
             expand={this.expandKey}
           />
         }
-        { this.returnExpanded() ? <ChordsModal close = {this.closeChordsModal} expandedKey={this.returnExpanded()} /> : null}
+        { this.returnExpanded()
+          ?
+        <ChordsModal
+          close={this.closeChordsModal}
+          expandedKey={this.returnExpanded()}
+          />
+          :
+          null
+        }
 			</div>
     );
   }
