@@ -1,3 +1,19 @@
 .carImg {
 	margin: auto;
 }
+
+.carousel-inner {
+	text-align: center;
+}
+
+.item {
+	min-height: 295px;
+}
+
+.left, .right {
+    background-image: none !important;
+}
+
+.glyphicon {
+	color: black;
+}

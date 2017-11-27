@@ -17,7 +17,7 @@
 		},
 		{
 			note: "F",
-			chords: ["F","Gm","Am","Bsharp","C","Dm","Edim"],
+			chords: ["F","Gm","Am","B#","C","Dm","Edim"],
 			expanded: false
 		},
 		{

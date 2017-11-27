@@ -4,19 +4,21 @@ import './Carousel.css';
 
 const ChordCarousel = props =>
 
-	<div id="myCarousel" className="carousel slide" data-ride="carousel">
+	<div id="myCarousel" className="carousel slide" data-ride="carousel" data-interval="false">
 	    <div className="carousel-inner">
 
 	        {Music.chordFinder({key: props.expandedKey}).map((chord, ind) =>
 	        	ind === 0
 	        	?
-		        <div key={chord} className="item active">
-		            <img className="carImg" src={"./img/" + chord + ".gif"} alt={chord + " Chord Diagram"}/>
-		        </div>
+			        <div key={chord} className="item active">
+			        	<h3>{chord} Chord</h3>
+			            <img className="carImg" src={"./img/" + chord + ".gif"} alt={chord + " Chord Diagram"}/>
+			        </div>
 		        :
-		        <div key={chord} className="item">
-		            <img className="carImg" src={"./img/" + chord + ".gif"} alt={chord + " Chord Diagram"}/>
-		        </div>
+			        <div key={chord} className="item">
+			       		<h3>{chord} Chord</h3>
+			            <img className="carImg" src={"./img/" + chord + ".gif"} alt={chord + " Chord Diagram"}/>
+			        </div>
 	        )}
 
 	    </div>
