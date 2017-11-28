@@ -33,6 +33,7 @@ const Body = props =>
                   keys = {props.user.keys}
                   delete={props.delete}
                   expand={props.expand}
+                  expandedSpotify={props.expandedSpotify}
                 />
             </div>
           }

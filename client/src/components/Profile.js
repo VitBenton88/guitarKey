@@ -4,13 +4,15 @@ import Music from "./Utils/Music";
 import Nav from "./Nav/Nav";
 import Body from "./Profile/Body";
 import ChordsModal from "./Modals/Chords";
+import SpotifyModal from "./Modals/Spotify";
 import SignInAlert from "./Alerts/SignInAlert";
 
 class Profile extends Component {
 
   state = {
     currentUser: {unchecked:true},
-    keys: []
+    keys: [],
+    spotifyExpanded: false
   };
 
   componentDidMount() {
@@ -85,7 +87,11 @@ class Profile extends Component {
       }
     }
     this.setState(this.state);
-};
+  };
+
+ expandSpotify = () => {
+    this.setState({ spotifyExpanded: true});
+  };
 
   render() {
     return (
@@ -102,14 +108,21 @@ class Profile extends Component {
             user={this.state.currentUser}
             delete={this.deleteKey}
             expand={this.expandKey}
+            expandedSpotify={this.expandSpotify}
           />
         }
         { this.returnExpanded()
           ?
-        <ChordsModal
-          close={this.closeChordsModal}
-          expandedKey={this.returnExpanded()}
-          />
+          <ChordsModal
+            close={this.closeChordsModal}
+            expandedKey={this.returnExpanded()}
+            />
+          :
+          null
+        }
+        { this.state.spotifyExpanded
+          ?
+          <SpotifyModal/>
           :
           null
         }

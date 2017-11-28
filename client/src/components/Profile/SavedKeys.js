@@ -2,6 +2,7 @@ import React from "react";
 import Music from "../Utils/Music";
 import ExpandBtn from "../Buttons/ExpandKey";
 import DelKeyBtn from "../Buttons/DeleteKey";
+import SpotifyBtn from "../Buttons/Spotify";
 import './Profile.css';
 
 const SavedKeys = props =>
@@ -19,6 +20,9 @@ const SavedKeys = props =>
                     <ExpandBtn
                       expand={()=>props.expand({key})}
                      />
+                    <SpotifyBtn
+                    expandedSpotify={()=>props.expandedSpotify}
+                    />
                     </h2></div>
                     <div className="panel-body">{Music.chordFinder({key}).join(", ")}</div>
                 </div>
