@@ -1,4 +1,8 @@
-#chordsModal {
+#chordsModal, #spotifyModal {
 	display: block;
 	background: rgba(0, 0, 0, .5); 
+}
+
+.spotifyLogo {
+	width: 100%;
 }

@@ -12,12 +12,12 @@ const ChordCarousel = props =>
 	        	?
 			        <div key={chord} className="item active">
 			        	<h3>{chord} Chord</h3>
-			            <img className="carImg" src={"./img/" + chord + ".gif"} alt={chord + " Chord Diagram"}/>
+			            <img className="carImg" src={"./img/" + chord.replace("#", "S") + ".gif"} alt={chord + " Chord Diagram"}/>
 			        </div>
 		        :
 			        <div key={chord} className="item">
 			       		<h3>{chord} Chord</h3>
-			            <img className="carImg" src={"./img/" + chord + ".gif"} alt={chord + " Chord Diagram"}/>
+			            <img className="carImg" src={"./img/" + chord.replace("#", "S") + ".gif"} alt={chord + " Chord Diagram"}/>
 			        </div>
 	        )}
 

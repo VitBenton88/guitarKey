@@ -70,7 +70,7 @@ class Profile extends Component {
     this.setState(this.state);
  };
 
-    returnExpanded = () => {
+  returnExpanded = () => {
     const keys = this.state.keys;
     for (let i = 0; i < keys.length; i++) {
       if (keys[i].expanded) {
@@ -91,6 +91,10 @@ class Profile extends Component {
 
  expandSpotify = () => {
     this.setState({ spotifyExpanded: true});
+  };
+
+ closeSpotify = () => {
+    this.setState({ spotifyExpanded: false});
   };
 
   render() {
@@ -122,7 +126,9 @@ class Profile extends Component {
         }
         { this.state.spotifyExpanded
           ?
-          <SpotifyModal/>
+          <SpotifyModal
+          close={this.closeSpotify}
+          />
           :
           null
         }
