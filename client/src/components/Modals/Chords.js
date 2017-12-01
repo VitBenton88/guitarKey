@@ -12,11 +12,11 @@ const ChordsModal = props =>
 			    <div className="modal-content">
 			      <div className="modal-header">
 			        <button onClick={props.close} type="button" className="close" data-dismiss="modal">&times;</button>
-			        <h4 className="modal-title">Chords for the key of {props.expandedKey}</h4>
+			        <h4 className="modal-title">Chords for the key of {props.currentKey}</h4>
 			      </div>
 				      <div className="modal-body">
 				      	<ChordCarousel
-				      		expandedKey={props.expandedKey}
+				      		currentKey={props.currentKey}
 				      	/>
 				      </div>
 			      <div className="modal-footer">

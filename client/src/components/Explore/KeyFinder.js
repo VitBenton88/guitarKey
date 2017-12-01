@@ -21,7 +21,7 @@ class KeyFinder extends Component {
 
   chordSelecter = (index) => {
       index = parseInt(index);//make sure the index is not a string
-      this.state.guitarChords[index].selected = !this.state.guitarChords[index].selected;//equate inverse pof current value for select/deseselt functionality
+      this.state.guitarChords[index].selected = !this.state.guitarChords[index].selected;//equate inverse of current value for select/deseselt functionality
       this.setState(this.state);
       console.log("Selecting: " + this.state.guitarChords[index].chord);
       this.selectedCount();

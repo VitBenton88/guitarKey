@@ -18,10 +18,10 @@ const SavedKeys = props =>
                       delete={()=>props.delete({key})}
                     />
                     <ExpandBtn
-                      expand={()=>props.expand({key})}
+                      expand={()=>props.expandedChords({key})}
                      />
                     <SpotifyBtn
-                      expandedSpotify={()=>props.expandedSpotify()}
+                      expandedSpotify={()=>props.expandedSpotify({key})}
                     />
                     </h2></div>
                     <div className="panel-body">{Music.chordFinder({key}).join(", ")}</div>

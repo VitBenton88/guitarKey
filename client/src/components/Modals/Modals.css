@@ -4,5 +4,13 @@
 }
 
 .spotifyLogo {
-	width: 100%;
+	width: 100px;
+}
+
+.spotifyModalText {
+	font-family: sans-serif;
+}
+
+.spotifyFooterTitle {
+	display: inline;
 }

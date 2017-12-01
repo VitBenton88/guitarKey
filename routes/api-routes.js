@@ -7,6 +7,15 @@ const bcrypt = require('bcrypt');
 const session = require('express-session');
 const authenticationMiddleware = require('../utils/authenticationMiddleware');
 const saltRounds = 10;
+const request = require('request');
+const Spotify = require('node-spotify-api');
+
+// global variables
+// =============================================================
+
+const spotify_client_id = 'a9b8de9f1dd24a1eb6be9649bc0a784c';
+const spotify_client_secret = 'bb29b6523f904ddda34879c5eb2c8f1e';
+let userAuthToken = "";
 
 // Routes
 // =============================================================
@@ -80,7 +89,7 @@ module.exports = (app) => {
 
     app.post("/login", passport.authenticate('local', {
 
-        successRedirect: "/", //if login was successful, redirect to profile page
+        successRedirect: "/profile", //if login was successful, redirect to profile page
         failureRedirect: "/" //if login unseccussful, redirect to homepage
 
     }), );
@@ -150,6 +159,72 @@ module.exports = (app) => {
                     res.send(true);
                 }
             });
+
+    });
+
+    //search spotify API by artist, then in promise query spotify API and return top songs by that artist
+    app.get("/spotify/artist", (req, res) => {
+
+        let {artist} = req.query;
+
+        // SET REQUEST BODY AND HEADER PARAMETER TO RUN SPOTIFY'S Client Credentials Flow AUTHORIZATION
+        const authOptions = {
+            url: 'https://accounts.spotify.com/api/token',
+            headers: {
+                'Authorization': 'Basic ' + (new Buffer(`${spotify_client_id}:${spotify_client_secret}`).toString('base64'))
+            },
+            form: {
+                grant_type: 'client_credentials'
+            },
+            json: true
+        };
+
+
+        request.post(authOptions, (error, response, body) => {
+            if (!error && response.statusCode === 200) {
+                // use the access token to access the Spotify Web API
+                userAuthToken = body.access_token;
+
+            }
+        });
+
+        let spotify = new Spotify({
+            id: spotify_client_id,
+            secret: spotify_client_secret
+        });
+
+        spotify
+            .search({ type: 'artist', query: artist, limit: 3 })
+            .then((response, error) => {
+
+                if (error) {
+
+                    res.send(error)
+
+                } else {
+                    const id = response.artists.items[0].id;
+                    const options = {
+                        url: `https://api.spotify.com/v1/artists/${id}/top-tracks?country=US`,
+                        headers: {
+                            Authorization: `Bearer ${userAuthToken}`
+                        }
+                    };
+
+                    request(options, (error, tracks, body) => {
+                        res.send(JSON.parse(body));
+
+                    });
+
+                };
+
+            });
+    });
+
+    app.get("/spotify/audiofeatures", (req, res) => {
+
+        let {ids} = req.query;
+
+        res.json(ids);
 
     });
 

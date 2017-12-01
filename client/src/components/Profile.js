@@ -12,6 +12,7 @@ class Profile extends Component {
   state = {
     currentUser: {unchecked:true},
     keys: [],
+    chordsExpanded: false,
     spotifyExpanded: false
   };
 
@@ -61,13 +62,16 @@ class Profile extends Component {
  };
 
   expandKey = key => {
-    const keys = this.state.keys;
+    let keys = this.state.keys;
+    
     for (let i = 0; i < keys.length; i++) {
       if (keys[i].note === key.key) {
         keys[i].expanded = true
+      } else {
+        keys[i].expanded = false
       }
     }
-    this.setState(this.state);
+    this.setState({ keys: keys });
  };
 
   returnExpanded = () => {
@@ -79,17 +83,17 @@ class Profile extends Component {
     }
  };
 
- closeChordsModal = () => {
-    const keys = this.state.keys;
-    for (let i = 0; i < keys.length; i++) {
-      if (keys[i].expanded) {
-        keys[i].expanded = false
-      }
-    }
-    this.setState(this.state);
+  openChordsModal = (key) => {
+    this.expandKey(key);
+    this.setState({ chordsExpanded: true});
   };
 
- expandSpotify = () => {
+ closeChordsModal = () => {
+    this.setState({ chordsExpanded: false});
+  };
+
+ expandSpotify = (key) => {
+    this.expandKey(key);
     this.setState({ spotifyExpanded: true});
   };
 
@@ -98,6 +102,7 @@ class Profile extends Component {
   };
 
   render() {
+    const key = this.returnExpanded();
     return (
 			<div>
 				<Nav
@@ -112,14 +117,15 @@ class Profile extends Component {
             user={this.state.currentUser}
             delete={this.deleteKey}
             expand={this.expandKey}
+            expandedChords={this.openChordsModal}
             expandedSpotify={this.expandSpotify}
           />
         }
-        { this.returnExpanded()
+        { this.state.chordsExpanded
           ?
           <ChordsModal
             close={this.closeChordsModal}
-            expandedKey={this.returnExpanded()}
+            currentKey={key}
             />
           :
           null
@@ -128,6 +134,7 @@ class Profile extends Component {
           ?
           <SpotifyModal
           close={this.closeSpotify}
+          currentKey={key}
           />
           :
           null
