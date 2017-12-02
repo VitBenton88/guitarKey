@@ -220,11 +220,48 @@ module.exports = (app) => {
             });
     });
 
+    //get additional song information e.g. key, tempo, duration, ect
     app.get("/spotify/audiofeatures", (req, res) => {
 
         let {ids} = req.query;
 
-        res.json(ids);
+        // SET REQUEST BODY AND HEADER PARAMETER TO RUN SPOTIFY'S Client Credentials Flow AUTHORIZATION
+        const authOptions = {
+            url: 'https://accounts.spotify.com/api/token',
+            headers: {
+                'Authorization': 'Basic ' + (new Buffer(`${spotify_client_id}:${spotify_client_secret}`).toString('base64'))
+            },
+            form: {
+                grant_type: 'client_credentials'
+            },
+            json: true
+        };
+
+
+        request.post(authOptions, (error, response, body) => {
+            if (!error && response.statusCode === 200) {
+                // use the access token to access the Spotify Web API
+                userAuthToken = body.access_token;
+
+            }
+        });
+
+        let spotify = new Spotify({
+            id: spotify_client_id,
+            secret: spotify_client_secret
+        });
+
+        const options = {
+            url: `https://api.spotify.com/v1/audio-features/?ids=${ids}`,
+            headers: {
+                Authorization: `Bearer ${userAuthToken}`
+            }
+        };
+
+        request(options, (error, tracks, body) => {
+            res.send(JSON.parse(body));
+
+        });
 
     });
 

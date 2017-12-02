@@ -2,7 +2,7 @@ import React from "react";
 import Music from "../Utils/Music";
 import ExpandBtn from "../Buttons/ExpandKey";
 import DelKeyBtn from "../Buttons/DeleteKey";
-import SpotifyBtn from "../Buttons/Spotify";
+import SpotifyBtn from "../Buttons/SpotifyModal";
 import './Profile.css';
 
 const SavedKeys = props =>

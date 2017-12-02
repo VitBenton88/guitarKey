@@ -14,3 +14,11 @@
 .spotifyFooterTitle {
 	display: inline;
 }
+
+.songInKey {
+    margin-bottom: 10px;
+}
+
+.songInKey h4 {
+    display: inline;
+}

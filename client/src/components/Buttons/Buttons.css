@@ -8,6 +8,36 @@ i:hover {
 	cursor: pointer;
 }
 
+.spotifySong {
+	display: inline;
+}
+
+.spotifySongLink{
+	color: #999999;
+	font-family: sans-serif;
+	font-size: 16px;
+	padding: 17px 5px 5px 0px;
+	margin-left: 5px;
+	border: 1px solid white;
+}
+
+.spotifySongLink:hover {
+    text-decoration: none;
+	color: #1DB954; /* spotify green color */
+	border: 1px solid #1DB954; /* spotify green color */
+	border-radius: 4px;
+}
+
+.spotifySongLink:visited, .spotifySongLink:focus {
+    text-decoration: none;
+	color: #1DB954;
+}
+
+.spotifyModalBtn:hover {
+	color: #1DB954;
+	border: 1px solid #1DB954;
+}
+
 .fa-floppy-o:hover {
 	border: 1px solid white;
 }
@@ -20,9 +50,4 @@ i:hover {
 .fa-expand:hover {
 	color: #587bf9;
 	border: 1px solid #587bf9;
-}
-
-.fa-spotify:hover {
-	color: #1DB954;
-	border: 1px solid #1DB954;
 }
