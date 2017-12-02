@@ -4,6 +4,6 @@ import './Buttons.css';
 const SpotifySong = props =>
 
     <a className="spotifySongLink" href={props.songLink} target="_blank">
-  		<i className="spotifySong fa fa-spotify fa-2x"></i>  Listen</a>
+  		<i className="spotifySong fa fa-external-link"></i>  Listen on Spotify</a>
 
 export default SpotifySong;

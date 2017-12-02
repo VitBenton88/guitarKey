@@ -69,6 +69,8 @@ class KeyFinder extends Component {
         <Results
           results = {this.state.results}
           save={this.saveKey}
+          expand={this.props.expandedChords}
+                     
          />
       )
 

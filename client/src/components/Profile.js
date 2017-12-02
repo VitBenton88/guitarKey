@@ -102,7 +102,7 @@ class Profile extends Component {
   };
 
   render() {
-    const key = this.returnExpanded();
+    const key = this.returnExpanded();//set current key for chordsModal
     return (
 			<div>
 				<Nav
