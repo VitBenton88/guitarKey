@@ -9,6 +9,7 @@ const authenticationMiddleware = require('../utils/authenticationMiddleware');
 const saltRounds = 10;
 const request = require('request');
 const Spotify = require('node-spotify-api');
+const ugs = require('ultimate-guitar-scraper');
 
 // global variables
 // =============================================================
@@ -265,12 +266,34 @@ module.exports = (app) => {
 
     });
 
+    //ultimate guirtar tabs search
+    app.get("/tabs", (req, res) => {
+
+        let {artist, song} = req.query;
+
+        let songName = song.replace(" - Remastered", "")//this removes some extraneous details in song titles that cause errors
+
+        console.log(`Getting tabs for ${songName} by ${artist}`);
+
+        ugs.search({
+              bandName: artist,
+              songName,
+              page: 1,
+              type: ['tabs']
+            }, (error, tabs) => {
+              if (error) {
+                console.log(error)
+              } else {
+                res.send(tabs)
+              }
+            })
+    });
+
     //for all other paths, redirect home
     app.get("/*", (req, res) => {
 
         res.redirect("/")
 
     });
-
 
 };

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../Utils/API";
 import Music from "../Utils/Music";
 import SpotifyBtn from "../Buttons/SpotifySong";
+import GetTabsBtn from "../Buttons/GetTabs";
 import Loader from "../Animations/Loader";
 import './Modals.css';
 
@@ -47,20 +48,20 @@ class SpotifyModal extends Component {
   };
 
   getAudioFeatures = songIds => {
-    API.spotifyAudioFeatures(songIds)
-    .then(res => {
-    	let audioFeatures = res.data.audio_features;
-    	let songsInKey = [];
-    	for (let i = 0; i < audioFeatures.length; i++) {
+      API.spotifyAudioFeatures(songIds)
+      .then(res => {
+      	let audioFeatures = res.data.audio_features;
+      	let songsInKey = [];
+      	for (let i = 0; i < audioFeatures.length; i++) {
 
-    		let keyToCheck = audioFeatures[i].key;
-    		let currentKey = this.state.key;
-    		if (this.interpretKeyInt(keyToCheck) === currentKey) {
-    			songsInKey.push(audioFeatures[i].id);
-    		}
-    	}
-    	this.setState({ songsInKey, searching: false });//hide loader and show results
-	});
+      		let keyToCheck = audioFeatures[i].key;
+      		let currentKey = this.state.key;
+      		if (this.interpretKeyInt(keyToCheck) === currentKey) {
+      			songsInKey.push(audioFeatures[i].id);
+      		}
+      	}
+      	this.setState({ songsInKey, searching: false });
+  	});
   };
 
   returnSongsInKey = () => {
@@ -68,13 +69,24 @@ class SpotifyModal extends Component {
   	return this.state.songs.map( (song, ind) => {
 
   		if (this.state.songsInKey.includes(song.id)) {
-            return (<div className="songInKey" key={song.id}> <h4>{song.name} </h4> <SpotifyBtn songLink={song.external_urls.spotify} /> </div>);
+            return (<div className="songInKey" key={song.id}> <h4>{song.name.replace(" - Remastered", "")} </h4>
+                    <SpotifyBtn songLink={song.external_urls.spotify} />
+                    <GetTabsBtn tabsSource={ () => this.getTabs(song.artists[0].name, song.name) } />
+                    </div>);
   		}
   		else {
   			return null;
   		}
   	  }
   	);
+  };
+
+  getTabs = (artist, song) => {
+      API.getTabs(artist, song)
+      .then(res => {
+        const url = res.data[1];
+        window.open(url);
+    });
   };
 
   render() {

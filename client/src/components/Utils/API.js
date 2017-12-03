@@ -41,6 +41,10 @@ export default {
 
 	spotifyAudioFeatures: (ids) => {
 		return axios.get(`/spotify/audiofeatures?ids=${ids.join(",")}`);
+	},
+
+	getTabs: (artist, song) => {
+		return axios.get(`/tabs?artist=${artist}&song=${song}`);
 	}
 
 };
