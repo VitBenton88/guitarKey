@@ -84,8 +84,8 @@ class SpotifyModal extends Component {
   getTabs = (artist, song) => {
       API.getTabs(artist, song)
       .then(res => {
-        const url = res.data[1];
-        window.open(url);
+        const url = res.data[1].url;
+        window.open(url);//open fetched url in new window
     });
   };
 
@@ -100,7 +100,7 @@ class SpotifyModal extends Component {
 		      <div className="modal-header">
 		        <button onClick={this.props.close} type="button" className="close" data-dismiss="modal">&times;</button>
 		        <h2 className="modal-title">Artist Search</h2>
-		        <h4 className="spotifyFooterTitle">Powered by: <img className="spotifyLogo" src="./img/Spotify/Spotify_Logo_RGB_Green.png" alt="Spotify Logo" /> </h4>
+		        <h4 className="spotifyFooterTitle">Powered by: <img className="spotifyLogo" src="./img/Spotify/Spotify_Logo_RGB_Green.png" alt="Spotify Logo" /> <img className="ugLogo" src="./img/Spotify/ultimate-guitar-logo.png" alt="Ultimate Guitar Logo" /> </h4>
 		      </div>
 			      <div className="modal-body">
 			      	<form>
