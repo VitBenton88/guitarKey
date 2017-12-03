@@ -1,4 +1,4 @@
-	const guitarChords = ["C","Dm","Em","F","G","Am","D","F#m","A","Bm","B","C#m","D#m","G#m"];
+	const guitarChords = ["C","Dm", "E","Em","F","G","Am","D","F#m","A","Bm","B","C#m","D#m","G#m"];
 	const chordsWithKeys = [
 		{		
 			note: "C",

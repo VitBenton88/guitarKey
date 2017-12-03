@@ -14,6 +14,7 @@ const Results = props =>
                     <div className="panel-heading"><h2 className="panel-title">Key of {key} 
                       <SaveKeyBtn
                        save={()=>props.save({key})}
+                       hoverClass="resultsSaveBtn"
                       />
                       <ExpandBtn
                         hoverClass="exploreExpandBtn"

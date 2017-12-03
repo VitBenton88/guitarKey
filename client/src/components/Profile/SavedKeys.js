@@ -18,6 +18,7 @@ const SavedKeys = props =>
                       delete={()=>props.delete({key})}
                     />
                     <ExpandBtn
+                      explore={false}
                       hoverClass="profileExpandBtn"
                       expand={()=>props.expandedChords({key})}
                      />

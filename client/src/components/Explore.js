@@ -58,7 +58,7 @@ class Explore extends Component {
         keys[i].expanded = false
       }
     }
-    this.setState({ keys: keys });
+    this.setState({ keys });
  };
 
   returnExpanded = () => {
@@ -78,6 +78,18 @@ class Explore extends Component {
  closeChordsModal = () => {
     this.setState({ chordsExpanded: false});
   };
+
+  saveKey = key => {
+    console.log({key});
+    API.saveKey({key})
+    .then(res => {
+      if(res){
+        alert("Key Saved!");
+      } else{
+        alert("Key Not Saved, Error");
+      }
+  });
+ };
 
   render() {
     const key = this.returnExpanded();//set current key for chordsModal
@@ -100,6 +112,9 @@ class Explore extends Component {
         { this.state.chordsExpanded
           ?
           <ChordsModal
+            explore={true}
+            hoverClass="exploreSaveBtn"
+            save={this.saveKey}
             close={this.closeChordsModal}
             currentKey={key}
             />

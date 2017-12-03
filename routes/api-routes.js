@@ -121,7 +121,7 @@ module.exports = (app) => {
     //save selected keys to DB
     app.post("/saveKey", (req, res) => {
 
-        const key = req.body.key.key;
+        const key = req.body.key.key || req.body.key;//save is called in chords modal and results on explore page, each one passes the musical key in an obj and the other as a string 
         const _id = req.user._id;
 
         console.log(`Saving key of: ${key}`);

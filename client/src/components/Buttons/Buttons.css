@@ -38,16 +38,20 @@ i:hover {
 	border: 1px solid #1DB954;
 }
 
-.fa-floppy-o:hover {
-	border: 1px solid white;
-}
-
 .fa-trash-o:hover {
 	color: red;
 	border: 1px solid red;
 }
 
 .exploreExpandBtn:hover {
+	border: 1px solid white;
+}
+
+.exploreSaveBtn:hover {
+	border: 1px solid black;
+}
+
+.resultsSaveBtn:hover {
 	border: 1px solid white;
 }
 
