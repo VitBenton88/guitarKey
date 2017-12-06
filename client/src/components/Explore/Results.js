@@ -8,10 +8,10 @@ const Results = props =>
   <div>
       <div className="container">
         <div className="row">
-         {props.results.map(key =>
-            <div key={key} className="col-md-4 col-sm-4 col-xs-6">
+         {props.results.map(key => (
+            <div key={key.note} className="col-md-4 col-sm-4 col-xs-6">
                 <div className="panel panel-success">
-                    <div className="panel-heading"><h2 className="panel-title">Key of {key} 
+                    <div className="panel-heading"><h2 className="panel-title">Key of {key.note} 
                       <SaveKeyBtn
                        save={()=>props.save({key})}
                        hoverClass="resultsSaveBtn"
@@ -22,9 +22,9 @@ const Results = props =>
                       />
                       </h2>
                     </div>
-                    <div className="panel-body">{Music.chordFinder({key}).join(", ")} </div>
+                    <div className="panel-body">{Music.chordFinder(key).join(", ")} </div>
                 </div>
-            </div>
+            </div>)
           )}
        </div>
     </div>

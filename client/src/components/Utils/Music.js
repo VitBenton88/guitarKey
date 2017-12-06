@@ -52,9 +52,9 @@ export default {
 
 	pitchClass: ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"],
 
-	chordFinder: (key) => {//http://www.guitaristsource.com/lessons/chords/keys/
+	chordFinder: (key) => { //http://www.guitaristsource.com/lessons/chords/keys/
 		for (let i = 0; i < chordsWithKeys.length; i++) {
-			if (key.key === chordsWithKeys[i].note){//when the key is passed through in Profile/SavedKeys, it's a property "key" of the "key" object
+			if (key.note === chordsWithKeys[i].note){//when the key is passed through in Profile/SavedKeys, it's a property "key" of the "key" object
 				return chordsWithKeys[i].chords
 			}
 		}
