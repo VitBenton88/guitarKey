@@ -13,12 +13,12 @@ const Results = props =>
                 <div className="panel panel-success">
                     <div className="panel-heading"><h2 className="panel-title">Key of {key.note} 
                       <SaveKeyBtn
-                       save={()=>props.save({key})}
+                       save={()=>props.save(key.note)}
                        hoverClass="resultsSaveBtn"
                       />
                       <ExpandBtn
                         hoverClass="exploreExpandBtn"
-                        expand={()=>props.expand({key})}
+                        expand={()=>props.expand(key.note)}
                       />
                       </h2>
                     </div>

@@ -26,7 +26,7 @@ const SavedKeys = props =>
                       expandedSpotify={()=>props.expandedSpotify({key})}
                     />
                     </h2></div>
-                    <div className="panel-body">{Music.chordFinder({key}).join(", ")}</div>
+                    <div className="panel-body">{Music.chordFinder({note:key}).join(", ")}</div>
                 </div>
             </div>
           )}

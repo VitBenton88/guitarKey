@@ -52,7 +52,7 @@ class Explore extends Component {
     let keys = this.state.keys;
     
     for (let i = 0; i < keys.length; i++) {
-      if (keys[i].note === key.key) {
+      if (keys[i].note === key) {
         keys[i].expanded = true
       } else {
         keys[i].expanded = false

@@ -7,7 +7,7 @@ const ChordCarousel = props =>
 	<div id="myCarousel" className="carousel slide" data-ride="carousel" data-interval="false">
 	    <div className="carousel-inner">
 
-	        {Music.chordFinder({key: props.currentKey}).map((chord, ind) =>
+	        {Music.chordFinder({note: props.currentKey}).map((chord, ind) =>
 	        	ind === 0
 	        	?
 			        <div key={chord} className="item active">
