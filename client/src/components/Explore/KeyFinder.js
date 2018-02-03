@@ -21,7 +21,7 @@ class KeyFinder extends Component {
 
     chordSelecter = (index) => {
         index = parseInt(index); //make sure the index is not a string
-        this.state.guitarChords[index].selected = !this.state.guitarChords[index].selected; //equate inverse of current value for select/deseselt functionality
+        this.state.guitarChords[index].selected = !this.state.guitarChords[index].selected; //equate inverse of current value for select/deselect functionality
         this.setState(this.state);
         console.log("Selecting: " + this.state.guitarChords[index].chord);
         this.selectedCount();
@@ -41,7 +41,7 @@ class KeyFinder extends Component {
         this.setState({ selected: count });
     };
 
-    resultsGen = () => { //the actual matching engine. NOT ACCURATE, ONLY RETURNS CHORDS CONTAINED IN KEY, NOT BEST MATCH OF CHOSEN
+    resultsGen = () => { //the actual matching engine.
 
         const chordsArr = this.state.guitarChords;
         const chordsWithKeys = Music.chordsWithKeys;
