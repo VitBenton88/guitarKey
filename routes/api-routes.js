@@ -32,9 +32,9 @@ module.exports = (app) => {
     app.get("/user", (req, res) => {
 
         if (req.isAuthenticated()) { //if user is authenticated, send user info, otherwise send false
-            res.send(req.user)
+            res.send(req.user);
         } else {
-            res.send(false)
+            res.send(false);
         }
 
     });
@@ -78,8 +78,7 @@ module.exports = (app) => {
 
                         })
 
-                })
-                .catch((err) => {
+                }).catch((err) => {
                     // If an error occurred, send it to the client
                     console.log(err);
                     res.send(false);
@@ -88,12 +87,14 @@ module.exports = (app) => {
 
     });
 
-    app.post("/login", passport.authenticate('local', {
-
-        successRedirect: "/profile", //if login was successful, redirect to profile page
-        failureRedirect: "/" //if login unseccussful, redirect to homepage
-
-    }), );
+    //user login
+    app.post('/login',
+      passport.authenticate('local'),
+      function(req, res) {
+        // If this function gets called, authentication was successful.
+        // `req.user` contains the authenticated user.
+        res.redirect(req.user);
+      });
 
     //user logout
     app.post("/logout", (req, res) => {
@@ -108,7 +109,7 @@ module.exports = (app) => {
 
     });
 
-    // profile page. Only renders if authentication is verified, if not, redirect to root 
+    // profile page. Only renders if authentication is verified, if not, redirect to root
     app.get("/profile", authenticationMiddleware(), (req, res) => {
 
         //console log user info if any
@@ -122,7 +123,7 @@ module.exports = (app) => {
     //save selected keys to DB
     app.post("/saveKey", (req, res) => {
 
-        const key = req.body.key.key || req.body.key;//save is called in chords modal and results on explore page, each one passes the musical key in an obj and the other as a string 
+        const key = req.body.key.key || req.body.key;//save is called in chords modal and results on explore page, each one passes the musical key in an obj and the other as a string
         const _id = req.user._id;
 
         console.log(`Saving key of: ${key}`);
@@ -238,7 +239,6 @@ module.exports = (app) => {
             json: true
         };
 
-
         request.post(authOptions, (error, response, body) => {
             if (!error && response.statusCode === 200) {
                 // use the access token to access the Spotify Web API
@@ -266,7 +266,7 @@ module.exports = (app) => {
 
     });
 
-    //ultimate guirtar tabs search
+    //ultimate guitar tabs search
     app.get("/tabs", (req, res) => {
 
         let {artist, song} = req.query;

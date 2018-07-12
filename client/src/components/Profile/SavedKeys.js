@@ -11,7 +11,7 @@ const SavedKeys = props =>
       <div className="container">
         <div className="row">
          {props.keys.map(key =>
-            <div key={key} id={key} data-expanded="false" className="col-md-4 col-sm-4 col-xs-6">
+            <div key={key} id={key} data-expanded="false" className="col-xs-12 col-sm-6 col-md-4">
                 <div className="panel panel-default">
                     <div className="panel-heading"><h2 className="panel-title">Key of {key}
                     <DelKeyBtn

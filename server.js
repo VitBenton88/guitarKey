@@ -88,36 +88,37 @@ passport.use(new LocalStrategy({
             .findOne({ email })
             .then((user, error) => {
 
-                if (error) {
-                    done(error);
-                };
-
                 const hashPass = user.password;
 
                 console.log("Hash: " + hashPass);
 
                 if (hashPass.length === 0) { //essentially, if no user info is returned
-                    done(null, false);
+                    done(null, false, { message: 'No password provided.'});
                 } else { //... else, run the bycrypt compare method to authenticate
 
                     //bcrypt de-hash
                     bcrypt.compare(password, hashPass, (err, response) => {
 
-                        if (response === true) {
+                        if (err) {
+                            console.log(`De-hash error: ${err}`);
+                        }
+
+                        if (response) {
                             console.log("Successful login!");
                             return done(null, { userID: user._id });
                         } else {
                             console.log("Unsuccessful login!");
-                            return done(null, false);
+                            return done(null, false, { message: 'Incorrect password or email provided.'});
                         }
 
                     });
 
                 }
 
-            })
-
-
+            }).catch((error) => {
+                console.log(`DB query error: ${error}`);
+                return done(error);
+            });
     }
 ));
 

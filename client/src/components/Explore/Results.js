@@ -9,9 +9,9 @@ const Results = props =>
       <div className="container">
         <div className="row">
          {props.results.map(key => (
-            <div key={key.note} className="col-md-4 col-sm-4 col-xs-6">
+            <div key={key.note} className="col-xs-12 col-sm-6 col-md-4">
                 <div className="panel panel-success">
-                    <div className="panel-heading"><h2 className="panel-title">Key of {key.note} 
+                    <div className="panel-heading"><h2 className="panel-title">Key of {key.note}
                       <SaveKeyBtn
                        save={()=>props.save(key.note)}
                        hoverClass="resultsSaveBtn"

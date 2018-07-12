@@ -19,13 +19,19 @@ class LoginModal extends Component {
     event.preventDefault();
     API.userLogin(this.state)
     .then(res => {
-	    this.confirmLogin()
-	});
+	    this.confirmLogin();
+	}).catch(error => {
+        this.loginError();
+    });
  };
 
  confirmLogin = () => {
  	alert("Successfully Logged In!");
  	window.location.reload();
+ };
+
+ loginError = () => {
+ 	alert("Username or password incorrect.");
  };
 
   render() {
